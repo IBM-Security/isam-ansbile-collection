@@ -1,3 +1,4 @@
+---
 .idea/*
 */.idea/*
 .DS_Store
@@ -6,3 +7,4 @@
 *.pyc
 *.bak
 *.tar.gz
+.vscode
