@@ -38,7 +38,7 @@
 
 - name: Check ISAM appliance for First Steps Execution
   uri:
-    url: "https://{{ inventory_hostname }}:{{ ansible_isam_port }}/lmi"
+    url: "https://{{ ansible_host|default(inventory_hostname) }}:{{ ansible_isam_port }}/lmi"
     user: admin
     password: "{{ first_steps_default_password }}"
     method: GET
