@@ -73,6 +73,7 @@ def main():
     module = AnsibleModule(
         argument_spec=dict(
             log=dict(required=False, default='INFO', choices=['DEBUG', 'INFO', 'ERROR', 'CRITICAL']),
+            force=dict(required=False, default=False, type='bool'),
             isamuser=dict(required=False),
             isampwd=dict(required=True, no_log=True),
             isamdomain=dict(required=False, default='Default'),
