@@ -1,0 +1,1 @@
+#molecule --base-config ~/ansible/isam_ansible_inventories/molecule/molecule_tbosmans.yml converge --scenario-name default

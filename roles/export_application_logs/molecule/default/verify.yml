@@ -1,0 +1,19 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: stat
+      stat:
+         path: "{{ logs_export_dir }}/{{ inventory_hostname }}"
+      register: reg_exportdir
+         
+    - name: "Assert that file structure was created"
+      assert:
+        that:
+          - reg_exportdir.stat.exists
+          - reg_exportdir.stat.isdir
+        fail_msg: "File strucure not created"
+        success_msg: "File structure created"

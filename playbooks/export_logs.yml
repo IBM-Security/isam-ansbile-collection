@@ -1,0 +1,10 @@
+---
+- name: Export application logs
+  hosts: all
+  gather_facts: no
+  collections:
+    - ibm.isam
+  tasks:
+    - name: "Export application logs"
+      include_role:
+        name: export_application_logs
