@@ -24,7 +24,8 @@
       maskOrPrefix: "{{ item.1.maskOrPrefix }}"
       allowManagement: "{{ item.1.allowManagement }}"
       enabled: "{{ item.1.enabled | default(False) }}"
-  loop: "{{ interfaces | subelements('addresses', {'skip_missing': True}) }}"
+      overrideSubnetChecking: "{{ item.1.overrideSubnetChecking | default(False) }}"
+  loop: "{{ interfaces | subelements('addresses', {'skip_missing': True}) }}"
   loop_control:
     label: "Processing interface {{ item.0.label }} and ip address {{ item.1.address }}"
   notify: Commit Changes

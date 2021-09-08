@@ -60,7 +60,7 @@
       | combine({ 'allowManagement': item.1.allowManagement } if (item.1.allowManagement is defined) else {})
     }}"
   when: item.0.label == label and item.1.address == address
-  loop: "{{ interfaces | subelements('addresses', {'skip_missing': True}) }}"
+  loop: "{{ interfaces | subelements('addresses', {'skip_missing': True}) }}"
   loop_control:
     label: "Processing interface {{ item.0.label }} and IP address {{ item.1.address }}"
   notify: Commit Changes
@@ -89,6 +89,7 @@
     isamapi:
       label: "{{ item.0.label }}"
       address: "{{ item.1 }}"
+      overrideSubnetChecking: "{{ configure_interfaces_overrideSubnetChecking | default(False) }}"
   when: item.1 is not in (interfaces | json_query(filter_current_interfaces)) and configure_interfaces_delete_missing and item.0.label == label and item.1 == address
   with_subelements:
     - "{{ addresses_list_server | default([]) }}"

@@ -1,3 +1,4 @@
 ---
 
 docker_publish_changes: false
+start_config_wait_time: 600
