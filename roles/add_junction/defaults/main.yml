@@ -48,3 +48,4 @@ add_junction_insert_ltpa_cookies: null
 add_junction_http2_junction: null
 add_junction_http2_proxy: null
 add_junction_sni_name: null
+add_junction_vhost_aliases: null

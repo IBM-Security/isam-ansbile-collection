@@ -49,6 +49,7 @@
       http2_junction: "{{ set_junction_http2_junction }}"
       http2_proxy: "{{ set_junction_http2_proxy }}"
       sni_name: "{{ set_junction_sni_name }}"
+      vhost_aliases: "{{ set_junction_vhost_aliases }}"
   when:
     - set_junction_junction_point is defined
     - set_junction_junction_type is defined
