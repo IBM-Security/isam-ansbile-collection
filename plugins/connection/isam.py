@@ -277,7 +277,7 @@ class Connection(NetworkConnectionBase):
         except Exception as e:
             raise AnsibleConnectionFailure("Error> Something went wrong here: action: {0} Exception: {1}".format(isam_module, e), options, e)
 
-    def call_isam_admin(self, adminDomain, isamuser, isampwd, commands):
+    def call_isam_admin(self, adminDomain, isamuser, isampwd, commands, ignore_error):
         """
         Execute an ISAM Admin command, also know as pdadmin commands
         """
@@ -291,7 +291,7 @@ class Connection(NetworkConnectionBase):
 
             # Execute isam admin function
             ret_obj = ibmsecurity.isam.web.runtime.pdadmin.execute(isamAppliance=self.isam_server, isamUser=iu,
-                                                                   admin_domain=adminDomain, commands=commands)
+                                                                   admin_domain=adminDomain, commands=commands, ignore_error=ignore_error)
             ret_obj['ansible_facts'] = self.isam_server.facts
             return ret_obj
         except ImportError as e:
